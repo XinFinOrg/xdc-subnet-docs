@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkxdc_subnet_docs=self.webpackChunkxdc_subnet_docs||[]).push([[995],{2292:e=>{e.exports=JSON.parse('{"permalink":"/xdc-subnet-docs/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":4,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

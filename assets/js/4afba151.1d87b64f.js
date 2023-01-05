@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkxdc_subnet_docs=self.webpackChunkxdc_subnet_docs||[]).push([[6621],{9366:s=>{s.exports=JSON.parse('{"label":"hola","permalink":"/xdc-subnet-docs/blog/tags/hola","allTagsPath":"/xdc-subnet-docs/blog/tags","count":1}')}}]);

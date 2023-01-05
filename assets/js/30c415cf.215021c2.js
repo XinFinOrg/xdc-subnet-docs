@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkxdc_subnet_docs=self.webpackChunkxdc_subnet_docs||[]).push([[3660],{6664:s=>{s.exports=JSON.parse('{"label":"docusaurus","permalink":"/xdc-subnet-docs/blog/tags/docusaurus","allTagsPath":"/xdc-subnet-docs/blog/tags","count":4}')}}]);

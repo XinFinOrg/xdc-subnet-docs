@@ -9,7 +9,7 @@ const config = {
   title: 'XDC Subnet',
   tagline: 'XDC Subnet documentation',
   url: 'https://XinFinOrg.github.io',
-  baseUrl: '/',
+  baseUrl: '/xdc-subnet-docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',

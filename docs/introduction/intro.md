@@ -1,12 +1,10 @@
 ---
+sidebar_label: "Motivation"
 sidebar_position: 1
 ---
 
 
 # Motivation
-
-XDC is high-performing. XDC has enterprise customers.
-
 
 We design a subnet for XDC enterprise customers to have:
 1.	a sovereign, permissioned, and high-performing blockchain (the subnet) fully owned by the customer

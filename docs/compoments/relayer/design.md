@@ -5,14 +5,20 @@ sidebar_position: 1
 # Design
 
 ## Background
-There is a strong demand from the banking industry to adopt XDC. One of the key requirements to enter the field is the ability to support subnets so that banks are able to keep the sensitive transactions within their own domain (privacy concern) but at the same time, have the ability to continuously audit the result (hash) of the subnet transactions on the XDC mainnet (security concern).
 
-Since the mainnet and subnets will be running as two independent node cluster, we will need to figure out a method to bridge them together to perform the auditing feature mentioned above. This is where “relayer” is coming into play.
+There is a strong demand from the banking industry to adopt XDC. One of their key requirements is the ability to support subnets so that banks are able to keep the sensitive transactions within their own domain (privacy concern). At the same time, they still want XDC network's protection of their transactions against attacks such as forking attacks (security concern). To this end, the subnet needs to checkpoint its headers to the XDC network. This will create an immutable history of the subnet on the XDC network, so that even if the subnet is attacked and diverged, people will still know the truth about the subnet.
 
-## High-level architectural diagram
-At high level, the relayer is able to:
-1. Pull necessary data from both subnet and mainnet
-2. Process and submit subnet block data as smart contract transactions into mainnet
-3. When subnet masternodes list changes, report the new list and change height to the mainnet using grand-master account.
+The relayer is a standalone component that responsible for the checkpointing.
 
+## Main Functionalities
+
+The main functionalities of the relayer are:
+1. Checkpoint subnet headers to the parent chain (XDC network) as smart contract transactions of the parent chain.
+2. Monitor the consistency between the subnet chain and its header chain maintained in the parent chain's smart contract, and raise alarm if it finds discrepency.
+3. (Grand-master only) When subnet masternode list changes, report the new list and the subnet block height when this change will apply to the parent chain.
+
+
+## Architecture
+
+@jerome some descriptions of the architecture diagram.
 ![architectural-diagram](relayer-diagram.jpg)

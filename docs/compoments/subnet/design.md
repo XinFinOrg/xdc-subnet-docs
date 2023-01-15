@@ -21,7 +21,7 @@ Last, the owner is able to customize blockchain parameters, such as epoch length
 ## Integrating with XDC mainnet
 Integrating with XDC mainnet will enable subnet to harness the security, finality, and accountability of XDC mainnet.
 
-The owner of XDC subnet needs to deploy a special contract on XDC mainnet, who has functions to upload block headers and record masternode changes. In this way, the subnet is tied to the mainnet and can gain additional advantages of XDC mainnet.
+The owner of XDC subnet needs to deploy a special contract called `ParentChain` on XDC mainnet, who has functions to upload block headers and record masternode changes. In this way, the subnet is tied to the mainnet and can gain additional advantages of XDC mainnet.
 
 Subnet will upload blockchain's headers to XDC mainnet, where they will be validated and stored on chain. Hence as long as the mainnet is secure, the block header information of subnet is securely stored on the mainnet. Users can also query the mainnet for finality to enhence the confidence that the subnet transaction is indeed finalized. Subnet can also report the culprits to the forensic server of XDC mainnet when its forensic monitor module detect safety violations. When the culprit report is validated, necessary measurements should be taken by the owner to reestablish the security of the subnet.
 

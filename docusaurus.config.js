@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'XDC Subnet',
-  tagline: 'XDC Subnet documentation',
+  /* tagline: 'XDC Subnet documentation', */
   url: 'https://XinFinOrg.github.io',
   baseUrl: '/xdc-subnet-docs/',
   onBrokenLinks: 'throw',

@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Deploy Parent Chain Smart Contract"
+sidebar_label: "2. Deploy Parent Chain Smart Contract"
 sidebar_position: 2
 ---
 

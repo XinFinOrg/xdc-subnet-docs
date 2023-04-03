@@ -34,9 +34,7 @@ const config = {
         docs: {
           routeBasePath: '/',
         },
-        theme: {
-          customCss: require.resolve('./src/css/custom.css'),
-        },
+        blog: false, // Optional: disable the blog plugin
       },
     ],
   ],
@@ -72,7 +70,7 @@ const config = {
             items: [
               {
                 label: 'Docs',
-                to: '/docs/intro',
+                to: '/',
               },
             ],
           },

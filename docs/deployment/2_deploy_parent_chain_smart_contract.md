@@ -9,6 +9,7 @@ For now, the user needs to use console to finish all of the operations below.
 ## Prerequisite
 - Install [TruffleSuite](https://trufflesuite.com/docs/truffle/how-to/install/)
 - Install [Git](https://git-scm.com/)
+- An XDC account that has over 0.00125 xdc token.
 
 ## Generate the smart contract
 ```

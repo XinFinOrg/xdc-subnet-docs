@@ -12,7 +12,7 @@ This is a guide for building your own XDC subnet with a bootnode, several master
 - Several host machines (>=3)
 
 ## Step 1: Host your bootnode
-A bootnode is a specialized type of node in the XDC network that helps new nodes join the network. It acts as a starting point for new nodes by providing them with a list of active peers and their IP addresses. Bootnodes facilitate the growth and connectivity of the network, allowing new nodes to find and connect with other nodes. They serve as a decentralized discovery mechanism, enabling new nodes to establish direct connections and participate in the XDC or its subnet network. Bootnodes do not have any special privileges and are primarily responsible for network discovery rather than block validation or transaction processing.
+A subnet bootnode is a special node needed for the initialization and growth of the P2P network in a subnet. It does this by providing new nodes a list of active peers and their IP addresses. Bootnodes do not have any special privileges. They are responsible for network discovery rather than block validation or transaction processing.
 
 1. Vist [https://github.com/XinFinOrg/XinFin-Node](https://github.com/XinFinOrg/XinFin-Node) and clone the code. i.e `git clone https://github.com/XinFinOrg/XinFin-Node`
 2. Check the `subnet` directory. i.e `cd subnet`
@@ -53,6 +53,5 @@ The genesis file is crucial for establishing the network's foundation and provid
   - EXTIP (Optional): NAT port mapping based on the external IP address.
   - SYNC_MODE (Optional): The node syncing mode. Available values are full or fast. Default to full.
   - LOG_LEVEL (Optional): {{Log level, from 1 to 5 where 1 produce least logs. default to 3 if not provided}}
-3. Provide your own `genesis.json` file
-  - The `genesis.json` file is the one you generated from step 2., make sure you rename the file to `genesis.json`
+3. Provide your own `genesis.json` file under the current directory. (The file generated from Step 2)
 4. Run `docker-compose up subnet`

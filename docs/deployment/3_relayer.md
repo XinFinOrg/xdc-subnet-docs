@@ -17,7 +17,7 @@ Once you are done with the slack setup, find the slack webhook url and put it he
 6. `PORT` -> (Optional) Port where the server will be started on. default to 3000 if not set
 
 ## Start the relayer!
-1. Pull the image from docker hub by running `docker pull xinfinorg/relayer:latest` (This registry is working in progress)
-2. Run the cli command to start the service: `docker run -d --env-file .env xinfinorg/relayer`
+1. Pull the image from docker hub by running `docker pull xinfinorg/xdc-relayer:latest`
+2. Run the cli command to start the service: `docker run -d --env-file .env xinfinorg/xdc-relayer`
 
 You are all set!

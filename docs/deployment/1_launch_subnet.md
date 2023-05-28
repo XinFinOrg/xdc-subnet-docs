@@ -12,16 +12,19 @@ This is a guide for building your own XDC subnet with a bootnode, several master
 - Several host machines (>=3)
 
 ## Step 1: Host your bootnode
+### Pre-requisite
+- Ensure host machine firewall rules allow both UDP and TCP on port 30301
+
 A subnet bootnode is a special node needed for the initialization and growth of the P2P network in a subnet. It does this by providing new nodes a list of active peers and their IP addresses. Bootnodes do not have any special privileges. They are responsible for network discovery rather than block validation or transaction processing.
 
 1. Vist [https://github.com/XinFinOrg/XinFin-Node](https://github.com/XinFinOrg/XinFin-Node) and clone the code. i.e `git clone https://github.com/XinFinOrg/XinFin-Node`
 2. Check the `subnet` directory. i.e `cd subnet`
-3. Create an file with name of `.env.bootnode`
-4. Make sure below values are populated in the .env.bootnode file:
+3. Create an empty file with name of `.env.bootnode` and `.env`
+4. Make sure below values are populated in the `.env.bootnode` file:
   - EXTIP: Your host external IP address. This is useful if you want your bootnode to be discoveryed outside of your local network.
   - NET_RESTRICTING (Optional): This restrict p2p connectivity to an IP subnet. It will further isolate the network and prevents cross-connecting with other blockchain networks in case the nodes are reachable from the Internet. example value `172.16.254.0/24`. With the this setting, bootnode will only allow connections from the 172.16.254.0/24 subnet, and will not attempt to connect to other nodes outside of the set IP range.
-5. Run `docker-compose up bootnode`. Copy the bootnode address which looks like `enode://blabla@[some-ip-address]:30301`
-
+5. Run `docker-compose up -d bootnode`. Copy the bootnode address which looks like `enode://blabla@[some-ip-address]:30301` from `bootnodes/bootnodes.list`
+6. (Optional) To verify if bootnode network is working as expected. Install `netcat` in a different host, run `nc -u -z -v {{ip address}} 30301` to check if connection is successful. (Replace the `{{ip address}}` with the bootnode host public IP)
 
 ## Step 2: Generate your genesis file
 In the context of XinFin XDC (XinFin Digital Contract), the genesis file refers to a configuration file that contains the initial parameters and settings for the blockchain network. It is an essential component used during the initialization process when creating a new XinFin blockchain network.
@@ -40,18 +43,18 @@ The genesis file is crucial for establishing the network's foundation and provid
   - when seeing "Which consensus engine to use?", choose "3. XDPoS - delegated-proof-of-stake".
   - as for other options, choose the options as you wish.
   - after the last step which is "Specify your chain/network ID if you want an explicit one", your genesis file is generated in your home directory and you can push "Ctrl-C" to exit `puppeth`.
-4. Copy the genesis file from you host under the directory of `./puppeth` (Keep this file, you will need it later)
+4. Copy the value of the key `genesis` from the file generated under `puppet` directory. (Keep it somewhere safe, we will need it later)
 
 ## Step 3: Host your subnet xdc-nodes
-1. Copy the `.env.example` and name it to `.env`
-2. Replace the environment variables in the `.env` with your own ones:
+1. Create an empty file with name of `.env.bootnode` and `.env`
+2. Set the environment variables in the `.env` with your own ones:
   - INSTANCE_NAME: Name of the instance
-  - BOOTNODES: Addresses of the bootnodes, seperated by ",". You should already have this value when you spin up the bootnode from the section above
+  - BOOTNODES: Addresses of the bootnodes, seperated by ",". You should already have this value when you spin up the bootnode from the section above (Step 1.5)
   - PRIVATE_KEY: Primary key of the wallet. Note, if not provided, the node will run on a random key
-  - NETWORK_ID: The subnet network id. This shall be unique in your local network. Default to 102 if not provided.
+  - NETWORK_ID: The subnet network id. This shall be unique in your local network. Default to 102 if not provided. (You can also find this from your genesis file)
   - RPC_API (Optional): The API that you would like to turn on. Supported values are "admin,db,eth,debug,miner,net,shh,txpool,personal,web3,XDPoS"
   - EXTIP (Optional): NAT port mapping based on the external IP address.
   - SYNC_MODE (Optional): The node syncing mode. Available values are full or fast. Default to full.
   - LOG_LEVEL (Optional): {{Log level, from 1 to 5 where 1 produce least logs. default to 3 if not provided}}
-3. Provide your own `genesis.json` file under the current directory. (The file generated from Step 2)
-4. Run `docker-compose up subnet`
+3. Provide your own `genesis.json` file under the current directory. (The file generated from Step 2.4)
+4. Run `docker-compose up -d subnet`

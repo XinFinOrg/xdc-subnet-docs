@@ -19,5 +19,6 @@ Once you are done with the slack setup, find the slack webhook url and put it he
 ## Start the relayer!
 1. Pull the image from docker hub by running `docker pull xinfinorg/xdc-relayer:latest`
 2. Run the cli command to start the service: `docker run -d --env-file .env xinfinorg/xdc-relayer`
+3. [Optional verification step] Run `docker ps` to find the running container id and then run `docker logs -f {{id}}` to verify logs from the running container. You should see logs about successful transaction submissions
 
 You are all set!

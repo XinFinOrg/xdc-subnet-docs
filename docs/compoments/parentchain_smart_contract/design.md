@@ -15,7 +15,7 @@ The main job of the parent chain smart contract is to receive the block data of 
 
    - In each epoch block, current may appear, which will select the next selected during the gap as validators from the current block to the next epoch
 
-   - Only 3 consecutive blocks of roundNumber can confirm the previous block
+   - Only 3 consecutive blocks of roundNumber can confirm the previous block and `mainnetNum` will change from -1 to `block.number` once the block is committed
 
 ![](sc-overview.jpg)
 
@@ -33,7 +33,7 @@ The main job of the parent chain smart contract is to receive the block data of 
 
 2.Relayer need to fetch every block data from subnet node
 
-
+3.Users can get the information of each block from methods such as getHeader
 ![](sc-checkpoint.jpg)
 
 #### Lite Checkpoint
@@ -46,6 +46,6 @@ The main job of the parent chain smart contract is to receive the block data of 
 
 2.Relayer only need to fetch gap/epoch block data and fetch the following consecutive roundnumber blocks to confirm the signed gap/epoch block from subnet node
 
-
+3.Users can get gap/epoch block information from methods such as getHeader
 
 ![](sc-litecheckpoint.jpg)

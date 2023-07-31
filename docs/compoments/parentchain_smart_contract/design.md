@@ -13,5 +13,16 @@ The main job of the parent chain smart contract is to receive the block data of 
 ## Specifics
 #### Checkpoint
 
+1.checkpoint will use these parameters to constructe the contract first
+
+   - `address[]  initial_validator_set `: List of initial validator addresses
+   - `bytes genesis_header`: block0HexRLP
+   - `bytes block1_header`: block1HexRLP
+   - `uint64 gap`: GAP block number on public chain
+   - `uint64 epoch`: EPOCH block number on public chain
+
+2.relayer need to fetch block data from subnet node
+
+![](sc-checkpoint.jpg)
 
 #### Lite Checkpoint

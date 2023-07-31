@@ -23,6 +23,8 @@ The main job of the parent chain smart contract is to receive the block data of 
 
 2.relayer need to fetch every block data from subnet node
 
+Each block will be verified whether the signature is signed by validators and passed 2/3 of the votes
+
 ![](sc-checkpoint.jpg)
 
 #### Lite Checkpoint
@@ -33,6 +35,12 @@ The main job of the parent chain smart contract is to receive the block data of 
    - `uint64 gap`: GAP block number on public chain
    - `uint64 epoch`: EPOCH block number on public chain
 
-2.relayer need to fetch gap/epoch block data from subnet node
+2.relayer only need to fetch gap/epoch block data and fetch the following consecutive roundnumber blocks to confirm the signed gap/epoch block from subnet node
 
 ![](sc-litecheckpoint.jpg)
+
+## Pay attention:
+
+In the gap block in the middle of each epoch, next may appear, which will select next for temporary storage
+
+In each epoch block, current may appear, which will select the next selected during the gap as validators from the current block to the next epoch

@@ -9,8 +9,9 @@ The main job of the parent chain smart contract is to receive the block data of 
 
 ![](sc-overview.jpg)
 
-##Specifics
-####Checkpoint
+
+## Specifics
+#### Checkpoint
 
 
-####Lite Checkpoint
+#### Lite Checkpoint

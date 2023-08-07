@@ -3,13 +3,8 @@ sidebar_label: Specs
 sidebar_position: 2
 ---
 
-# Specifications
-There is a current sample subnet contract deployed at `0x203F7f019401a8B26aA071901dc9dDcfe3611FD4` on XDC devnet. This contract is under optimizing and auditioning.
-
 ## APIs
 - Functions that have access restriction to authorized client
-    - `addMaster(address)`: Grant access to target client
-    - `removeMaster(address)`: Remove access to target client
     - `reviseValidatorSet(address[], int, int)`: Update subnet block header signer list at destined height
     - `receiveHeader(bytes[])`: Validate and store subnet headers
 

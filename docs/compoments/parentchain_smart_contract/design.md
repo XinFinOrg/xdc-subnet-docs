@@ -83,3 +83,76 @@ Lite Checkpoint is a lightweight block header checkpoint. It implements several 
 3. Users can get gap/epoch block information from methods such as `getHeader`.
 
 ![Lite Checkpoint](sc-litecheckpoint.jpg)
+
+
+### Upgradeable module
+
+The Upgradeable module mainly revolves around the concept of transparent proxies and the ability to upgrade the underlying logic contracts without changing the contract's address.
+
+#### ProxyGateway Smart Contract
+
+The `ProxyGateway` smart contract plays a central role in this module. It inherits from `ProxyAdmin` and primarily serves the purpose of creating and managing transparent upgradeable proxies (`TransparentUpgradeableProxy`).
+
+**Key Components and Functionalities**:
+
+- **cscProxies**: 
+  - A mapping used to store two types of transparent upgradeable proxies.
+    - `0` represents "full"
+    - `1` represents "lite"
+
+- **CreateProxy Event**: 
+  - Emitted whenever a new transparent upgradeable proxy is created.
+
+- **createProxy Function**: 
+  - Creates a new `TransparentUpgradeableProxy`.
+  - Emits the `CreateProxy` event upon creation.
+
+- **createFullProxy Function**: 
+  - Specifically designed for creating a transparent upgradeable proxy of type "full".
+  - Checks if a "full" type proxy already exists.
+  - Ensures the provided logic contract has a `MODE` function that returns "full".
+
+- **createLiteProxy Function**: 
+  - Designed for creating proxies of type "lite".
+  - Checks if a "lite" type proxy already exists.
+  - Ensures the provided logic contract has a `MODE` function that returns "lite".
+
+
+![Alt text](sc-upgradeable-overview.png)
+
+**Logic Flow:**
+
+1. **Initialization**:
+   
+   The process begins with the `ProxyGateway` contract, which serves as a central hub for creating transparent upgradeable proxies. The contract owner has the capability to create either "full" or "lite" proxies.
+   
+2. **Proxy Creation**:
+
+   - The owner calls either the `createFullProxy` or `createLiteProxy` function based on the desired type of proxy.
+   - The specified logic contract's `MODE` is checked to ensure it matches the desired proxy type.
+   - A new `TransparentUpgradeableProxy` is created with the specified logic contract, the `ProxyGateway` as the admin, and any necessary initialization data.
+   - The new proxy's address is stored in the `cscProxies` mapping under its corresponding type.
+   - The `CreateProxy` event is emitted to log the creation of the new proxy.
+
+3. **Upgrading the Proxy**:
+
+   When there's a need to upgrade the underlying logic of the proxy (for instance, to introduce new features or fix bugs):
+
+   - A new logic contract version is deployed to the network.
+   - The owner (or authorized entity) of the `ProxyGateway` contract calls the inherited `upgrade` function from `ProxyAdmin` to point the proxy to the new logic contract.
+   - The proxy now delegates all calls to the new logic contract, while still retaining all its previous storage and state.
+   - This enables the system to evolve and implement new functionalities without migrating to a new contract address or affecting the contract's stored data.
+
+4. **Interacting with the Proxy**:
+
+   Users and other contracts can interact with the proxy just as they would with a regular contract. However, behind the scenes, all function calls and data accesses are delegated to the current logic contract that the proxy points to.
+
+5. **Querying and Data Access**:
+
+   Users and contracts can still query data, access functions, or invoke transactions on the proxy's address. The proxy transparently delegates these to the underlying logic contract, ensuring continuity of operations.
+
+6. **Advanced Management**:
+
+   Through the `ProxyAdmin` functionality, the owner can further manage the proxy, such as changing the admin or even downgrading to a previous version of the logic contract if needed.
+
+![Alt text](sc-upgradeable-upgrade.png)

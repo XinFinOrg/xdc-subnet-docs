@@ -5,57 +5,60 @@ sidebar_position: 1
 
 # Launch a Subnet
 
-This is a guide for building your own XDC subnet with a bootnode, several master nodes, and customized genesis file.
+## Overview
+  For the convenience of deploying Subnet, we have provided the Subnet Deployment Generator. The Subnet Deployment Generator is configuration generator for all components of subnet deployment. It generates all the necessary files and configs from a simple initial docker.env file. The required parameters are 
 
-## Pre-requisite
-- [Docker](https://docs.docker.com/get-docker/)
-- Several host machines (>=3)
-- Your private keys (If you don't have any and would like to create some, please refer to the `address-creator` README.md in this repo)
+    1. How many machines will you use to deploy subnet?
+    2. How many subnet nodes will you deploy in total?
+    3. IP address of the main machine
+    4. Parentchain wallet with funds
 
-### Step 0: Set up environment
-1. Vist [https://github.com/XinFinOrg/XinFin-Node](https://github.com/XinFinOrg/XinFin-Node) and clone the code. i.e `git clone https://github.com/XinFinOrg/XinFin-Node`
-2. Check the `subnet` directory. i.e `cd subnet`
-3. Create empty environment files by running `./start.sh` (You may need admin permission to create file, run with `sudo bash ./start.sh`)
+  In this setup the main machine (machine1) will host all the subnet services(relayer, stats, frontend) while the subnet miner nodes will be spread out among all machines.
+  
+  The IP address of the main machine is needed for subnet connectivity, this is the IP that is known to all other machines, could be private or public (preferrably private)
 
-### Step 1: Host your bootnode
-A subnet bootnode is a special node needed for the initialization and growth of the P2P network in a subnet. It does this by providing new nodes a list of active peers and their IP addresses. Bootnodes do not have any special privileges. They are responsible for network discovery rather than block validation or transaction processing.
+  Once generated, the commands to startup the subnet is also provided as a generated `commands.txt` file.
 
-1. Find the file with name of `.env.bootnode`
-2. Make sure below values are populated in the `.env.bootnode` file:
-  - EXTIP: Your host external IP address. This is useful if you want your bootnode to be discoveryed outside of your local network.
-  - NET_RESTRICTING (Optional): This restrict p2p connectivity to an IP subnet. It will further isolate the network and prevents cross-connecting with other blockchain networks in case the nodes are reachable from the Internet. example value `172.16.254.0/24`. With the this setting, bootnode will only allow connections from the 172.16.254.0/24 subnet, and will not attempt to connect to other nodes outside of the set IP range.
-3. Run `docker-compose up bootnode`. Copy the bootnode address which looks like `enode://blabla@[some-ip-address]:30301`. You can find this information under the file `bootnodes/bootnodes.list`
+  The deployment is docker based, the main deployment file is `docker-compose.yml`. The `docker-compose.env` is the injection point to all configs. Then, ENVs for the services and subnet nodes are in `*.env` files. Other files include `genesis.json` file to initialize subnet chain, `deployment.json` to deploy the checkpoint smartcontract, and `keys.json` the keypairs for subnet nodes + grandmaster node.
 
-### Step 2: Generate your genesis file
-In the context of XinFin XDC (XinFin Digital Contract), the genesis file refers to a configuration file that contains the initial parameters and settings for the blockchain network. It is an essential component used during the initialization process when creating a new XinFin blockchain network.
+## Requirements
+  - OS: Linux. Only Linux is supported right now, due to [docker network limitation](https://docs.docker.com/network/drivers/host/#:~:text=The%20host%20networking%20driver%20only%20works%20on%20Linux%20hosts%2C%20and%20is%20not%20supported%20on%20Docker%20Desktop%20for%20Mac%2C%20Docker%20Desktop%20for%20Windows) 
+  
+  - docker, docker compose V2. For manual installation of docker compose V2 please refer to: https://docs.docker.com/compose/install/linux/
+  
+## Steps
+  1. Create a `docker.env` file with parameters similar to [`docker.env.example`](https://github.com/XinFinOrg/XinFin-Node/blob/master/subnet/deployment-generator/docker.env.example). Detailed parameters explanation [here](https://xinfinorg.github.io/xdc-subnet-docs/deployment/configs_explanation).
 
-The genesis file defines various parameters, such as the initial block data, the initial set of validators, the block time, consensus algorithm settings, network ID, and other network-specific configurations. It serves as a blueprint for the blockchain's initial state and determines how the network will be set up and operate from the very beginning.
+  2. Pull latest subnet-generator image
+  ```
+  docker pull xinfinorg/subnet-generator:latest
+  ```
+  
+  3. Generate configurations, this will create a new `generated` directory
+  ```
+  docker run --env-file docker.env -v $(pwd)/generated:/app/generated xinfinorg/subnet-generator:latest && cd generated
+  ```
 
-When launching a new XinFin XDC network, the genesis file is typically created and distributed to all participating nodes. Each node in the network references this file during the initialization process to ensure they have a consistent starting point for the blockchain's state. This ensures that all nodes agree on the initial conditions and can validate and agree upon subsequent transactions and blocks in a decentralized manner.
+  4. follow the generated instructions in `commands.txt` to start Subnet Nodes and [make sure they are mining](https://xinfinorg.github.io/xdc-subnet-docs/deployment/debug_guide#subnet-nodes).
 
-The genesis file is crucial for establishing the network's foundation and provides the initial rules and parameters for the XinFin XDC blockchain.
+  5. follow the generated instructions in `commands.txt` to deploy the Checkpoint Smart Contract. 
+  ```
+  docker run                                                           \
+    --env-file docker.env                                              \
+    -v $(pwd)/generated/deployment.json:/app/generated/deployment.json \
+    --entrypoint 'bash' xinfinorg/subnet-generator:latest ./deploy_csc.sh
+  ```
 
-1. Run `docker-compose run puppeth` and follow its instructions, specifically
-  - when seeing "Please specify a network name to administer", enter the network name as you wish. e.g., network001.
-  - when seeing "What would you like to do?", choose "2. Configure new genesis".
-  - when seeing "Which consensus engine to use?", choose "3. XDPoS - delegated-proof-of-stake".
-  - as for other options, choose the options as you wish.
-  - after the last step which is "Specify your chain/network ID if you want an explicit one", your genesis file is generated in your home directory and you can push "Ctrl-C" to exit `puppeth`.
-2. Open the generated file under the `./puppeth` directory. Copy the value of key `genesis`. Keep it somewhere safe for later usage.
+  6. follow the generated instructions in `commands.txt` to deploy the Subnet Services (relayer, stats-server, frontend)
 
-### Step 3: Host your subnet xdc-nodes
-1. Find the file with name `.env`
-2. Fill in the environment variables in the `.env`:
-  - INSTANCE_NAME: Name of the instance
-  - BOOTNODES: Addresses of the bootnodes, seperated by ",". You should already have this value when you spin up the bootnode from the section above
-  - PRIVATE_KEY: Primary key of the wallet. Note, if not provided, the node will run on a random key
-  - NETWORK_ID: The subnet network id. This shall be unique in your local network. Default to 102 if not provided.
-  - STATS_SECRET: A secret that you used between your stats service and the subnet node. (This value need to match with Step 4 STATS_SECRET)
-  - STATS_SERVICE_ADDRESS: The backend service that was created at step 1 for the UI representation of the subnet blockchain.
-  - RPC_API (Optional): The API that you would like to turn on. Supported values are "admin,db,eth,debug,miner,net,shh,txpool,personal,web3,XDPoS"
-  - EXTIP (Optional): NAT port mapping based on the external IP address.
-  - SYNC_MODE (Optional): The node syncing mode. Available values are full or fast. Default to full.
-  - LOG_LEVEL (Optional): {{Log level, from 1 to 5 where 1 produce least logs. default to 3 if not provided}}
-3. Provide your own `genesis.json` file under the current directory. (The value from Step 2.4)
-4. Run `docker-compose up -d subnet`
-5. [Optional verification step] Run `docker ps` to find the running container id and then run `docker logs -f {{id}}` to verify logs from the running container. Confirm nodes are correctly processing blocks
+  7. Check out the Subnet UI at `<MAIN_IP>:5000`
+
+### Removing Subnet
+  1.  Change the commands in `commands.txt` to `docker compose ... down`
+  ```
+  docker compose --env-file docker-compose.env --profile <profile_name> down 
+  ```
+
+  2. Repeat 1. for every docker `--profile` that was started. 
+
+  3. Inside `generated` directory, remove `bootnodes`, `stats-service`, and `xdcchain*` directories

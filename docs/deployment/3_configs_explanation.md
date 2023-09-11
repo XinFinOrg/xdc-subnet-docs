@@ -1,6 +1,6 @@
 ---
 sidebar_label: "3. Deployment and Configs Explanation"
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # Configs Explanation
@@ -37,10 +37,7 @@ sidebar_position: 4
 
   6. PARENTCHAIN - The Parentchain where the Checkpoint Smart Contract (CSC) will be deployed and where relayer will push block headers. Available: 'devnet', 'testnet', 'mainnet'. (Currently only 'devnet' is supported)
 
-  7. PARENTCHAIN_WALLET - The public key of Parentchain wallet 
-
-  8. PARENTCHAIN_WALLET_PK - The private key of Parentchain wallet
-
+  7. PARENTCHAIN_WALLET_PK - The private key of Parentchain wallet
 
   ### Optional Parameters
 
@@ -58,7 +55,9 @@ sidebar_position: 4
   ```
 
   #### Other Configs
-  - RELAYER_MODE - 'full' or 'lite'. Defaults to 'full'. Please check [here](#WIP) for relayer mode documentation. 
+  - RELAYER_MODE - 'full' or 'lite', this effects the type of Checkpoint Smart Contract(CSC) that is deployed. Defaults to 'full'. Please check [here](#WIP) for relayer mode documentation. 
+  - GRANDMASTER_PK - The Grandmaster privatekey, only one is allowed. Random if not provided.
+  - SUBNETS_PK - Subnet nodes' privatekeys, multiple keys separated by comma(,). Number of keys must equal NUM_SUBNET. Randomized by default. 
   - NETWORK_ID - If you want a specific number, must be between 1-65536. Default is random.
   - SERVICES_SECRET - A shared secret for authentication between the stats service and the subnet nodes. Default to a random string.
   - SLEEP - Debug parameter, set a timer(in seconds) to prevent the generator docker image from shutting down after generation finished. 

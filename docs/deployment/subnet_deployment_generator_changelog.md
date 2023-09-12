@@ -12,3 +12,4 @@ sidebar_position: 4
   - Automate CHECKPOINT_CONTRACT copy-paste step (manual action no longer required).
   - PARENTCHAIN_WALLET is no longer required in 'docker.env', the address will be derived from PARENTCHAIN_WALLET_PK. 
   - Disabled parentchain observer in docker-compose.yml, unused for now (due to long startup time).
+  - Bump default subnet components stable versions

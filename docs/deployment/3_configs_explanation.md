@@ -70,7 +70,8 @@ After the generator has succesfully run, all generated files will be under 'gene
 - docker-compose.yml - The main deployment file. Includes docker images versions, startup commands, network configurations.
 - docker-compose.env - The config injection path that docker uses to point to other *.env files.
 - genesis.json - The 'block 0' of the Subnet. Initializes the blockchain for subnet nodes.
-- genesis_input.yml - An intermediate file used in config generation. 
+- genesis_input.yml - An intermediate file used in config generation.
+- deployment.config.json - The config file used for CSC deployment.
 - keys.json - Generated keypairs or custom keypairs by user input. Please be mindful to remove this file and keep the credentials securely.
 - common.env - The config parameters for Subnet services.
 - subnet*.env - The config parameters for each Subnet node.

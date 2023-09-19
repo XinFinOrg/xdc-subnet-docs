@@ -50,11 +50,11 @@ sidebar_position: 2
       admin.peers
       ```
 
-3. Check logs, assuming log level 4 (default 2), you want to look for logs with blockNum, and blockNum should increase with time.
-    
-    ```
-    docker logs -f <container_name> 
-    ```
+  3. Check logs, assuming log level 4 (default 2), you want to look for logs with blockNum, and blockNum should increase with time.
+      
+      ```
+      docker logs -f <container_name> 
+      ```
 
 
 
@@ -81,7 +81,8 @@ sidebar_position: 2
 
   Check logs or check errors through developer console in web browser.
 
-# Common Issues
+
+  ## Common Issues
 
   1. Subnet node does not boot with error log `Fatal: Error starting protocol stack: listen unix /work/xdcchain/XDC.ipc: bind: invalid argument`
 

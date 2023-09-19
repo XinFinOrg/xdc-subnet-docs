@@ -58,6 +58,7 @@ sidebar_position: 3
   - RELAYER_MODE - 'full' or 'lite', this effects the type of Checkpoint Smart Contract(CSC) that is deployed. Defaults to 'full'. Please check [here](#WIP) for relayer mode documentation. 
   - GRANDMASTER_PK - The Grandmaster privatekey, only one is allowed. Random if not provided.
   - SUBNETS_PK - Subnet nodes' privatekeys, multiple keys separated by comma(,). Number of keys must equal NUM_SUBNET. Randomized by default. 
+  - OS - 'mac' is an optional value for single machine testing environment on MacOS. The docker compose setup is differrent due to [docker network limitation](https://docs.docker.com/network/drivers/host/#:~:text=The%20host%20networking%20driver%20only%20works%20on%20Linux%20hosts%2C%20and%20is%20not%20supported%20on%20Docker%20Desktop%20for%20Mac%2C%20Docker%20Desktop%20for%20Windows).
   - NETWORK_ID - If you want a specific number, must be between 1-65536. Default is random.
   - SERVICES_SECRET - A shared secret for authentication between the stats service and the subnet nodes. Default to a random string.
   - SLEEP - Debug parameter, set a timer(in seconds) to prevent the generator docker image from shutting down after generation finished. 

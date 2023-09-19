@@ -22,12 +22,14 @@ sidebar_position: 1
   The deployment is docker based, the main deployment file is `docker-compose.yml`. The `docker-compose.env` is the injection point to all configs. Then, ENVs for the services and subnet nodes are in `*.env` files. Other files include `genesis.json` file to initialize subnet chain, `deployment.json` to deploy the checkpoint smartcontract, and `keys.json` the keypairs for subnet nodes + grandmaster node.
 
 ## Requirements
-  - OS: Linux. Only Linux is supported right now, due to [docker network limitation](https://docs.docker.com/network/drivers/host/#:~:text=The%20host%20networking%20driver%20only%20works%20on%20Linux%20hosts%2C%20and%20is%20not%20supported%20on%20Docker%20Desktop%20for%20Mac%2C%20Docker%20Desktop%20for%20Windows) 
+  - OS: Linux. Only Linux is supported for full deployment. 
+
+  - OS: Mac is only supported for single machine testing environment. Specify MacOS with 'OS=mac' in 'docker.env' file. Please also refer [common issues](./2_debug_guide.md#common-issues).
   
   - docker, docker compose V2. For manual installation of docker compose V2 please refer to: https://docs.docker.com/compose/install/linux/
   
 ## Steps
-  1. Create a `docker.env` file with parameters similar to [`docker.env.example`](https://github.com/XinFinOrg/XinFin-Node/blob/master/subnet/deployment-generator/docker.env.example). Detailed parameters explanation [here](https://xinfinorg.github.io/xdc-subnet-docs/deployment/configs_explanation).
+  1. Create a `docker.env` file with parameters similar to [`docker.env.example`](https://github.com/XinFinOrg/XinFin-Node/blob/master/subnet/deployment-generator/docker.env.example). Detailed parameters explanation [here](./3_configs_explanation.md).
 
   2. Pull latest subnet-generator image
   ```
@@ -39,7 +41,7 @@ sidebar_position: 1
   docker run --env-file docker.env -v $(pwd)/generated:/app/generated xinfinorg/subnet-generator:latest && cd generated
   ```
 
-  4. follow the generated instructions in `commands.txt` to start Subnet Nodes and [make sure they are mining](https://xinfinorg.github.io/xdc-subnet-docs/deployment/debug_guide#subnet-nodes).
+  4. follow the generated instructions in `commands.txt` to start Subnet Nodes and [make sure they are mining](./2_debug_guide.md#subnet-nodes).
 
   5. follow the generated instructions in `commands.txt` to deploy the Checkpoint Smart Contract. 
   ```

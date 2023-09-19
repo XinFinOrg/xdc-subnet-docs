@@ -5,6 +5,8 @@ sidebar_position: 4
 
 # Subnet Deployment Generator Changelog
 
+### v0.1.5
+  - Added OS=mac option in 'docker.env'. This option is intended for single machine testing environment only.
 ### v0.1.4
   - Added custom keys functionality
     'docker.env' now accepts GRANDMASTER_PK and SUBNETS_PK. Where SUBNETS_PK can have multiple keys separated by a comma ','. Number of subnet keys must equal NUM_SUBNET. Keys are randomized if not provided.

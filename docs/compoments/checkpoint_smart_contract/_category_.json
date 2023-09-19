@@ -1,0 +1,11 @@
+{
+  "label": "Checkpoint Smart Contract",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "This section specifies the Checkpoint Smart Contract in the parent chain that protects the child chain."
+  }
+}
+
+
+

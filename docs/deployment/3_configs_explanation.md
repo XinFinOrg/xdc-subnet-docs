@@ -89,4 +89,4 @@ After the generator has succesfully run, all generated files will be under 'gene
 3. Stats Server (UI backend) - port 3000. 
   - To change this change left value inside `docker-compose.yml` stats port config. For example `3001:3000` will deploy on port 3001. In each `subnetX.env` file, `STATS_SERVICE_ADDRESS` port needs to be changed. In `common.env`, `VITE_SUBNET_URL` port also needs to change. 
 4. UI Frontend - port 5000.
-  - To change this change left value inside `docker-compose.yml` frontend port config. Then restart the docker image.
+  - To change this change left value inside `docker-compose.yml` frontend port config. For example `5001:5000` will deploy on port 5001. Then restart the docker image.

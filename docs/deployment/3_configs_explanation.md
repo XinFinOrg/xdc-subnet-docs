@@ -76,3 +76,17 @@ After the generator has succesfully run, all generated files will be under 'gene
 - keys.json - Generated keypairs or custom keypairs by user input. Please be mindful to remove this file and keep the credentials securely.
 - common.env - The config parameters for Subnet services.
 - subnet*.env - The config parameters for each Subnet node.
+
+
+## Subnet Ports
+1. Subnet Nodes - 3 ports are used per each subnet, RPC port, WS port, and Peering port. The port number is incremented by 1 for the next subnet node. For example subnet1's RPC is 8545, subnet2's RPC will be 8546 and so on.
+  - RPC PORT - 8545, 8546, 8547, ... This is the API port, for outside chain communication to issue transaction or query chaindata.
+  - WS PORT - 9555, 9556, 9557, ... This is not used currently.
+  - Peering port - 20303, 20304, 20305, ... This is used for subnet nodes and bootnode peering and communication.
+  - Subnet ports config can be changed in `subnetX.env` for each individual subnet.
+2. Bootnode - port 20301
+  - Bootnode port can be changed at `BOOTNODE_PORT` under `common.env`. Also in each `subnetX.env`, `BOOTNODES` port has to be changed.
+3. Stats Server (UI backend) - port 3000. 
+  - To change this change left value inside `docker-compose.yml` stats port config. For example `3001:3000` will deploy on port 3001. In each `subnetX.env` file, `STATS_SERVICE_ADDRESS` port needs to be changed. In `common.env`, `VITE_SUBNET_URL` port also needs to change. 
+4. UI Frontend - port 5000.
+  - To change this change left value inside `docker-compose.yml` frontend port config. For example `5001:5000` will deploy on port 5001. Then restart the docker image.

@@ -1,10 +1,19 @@
 ---
 sidebar_label: "Subnet Deployment Generator Changelog"
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 # Subnet Deployment Generator Changelog
 
+### v0.2.1 - 2024/01/09
+  - New generation style, pulls script from github to run multiple docker images instead of generating from single image.
+  - New Checkpoint Smart Contract (CSC) deployment image
+  - Supports upgradable CSC
+  - Bump components versions
+  - Fix bugs
+  - Code refactor, optimization
+### v0.1.6
+  - Bump relayer version to support gas fee changes
 ### v0.1.5
   - Added OS=mac option in 'docker.env'. This option is intended for single machine testing environment only.
 ### v0.1.4

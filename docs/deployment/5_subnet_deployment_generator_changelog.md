@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Subnet Deployment Generator Changelog"
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 # Subnet Deployment Generator Changelog

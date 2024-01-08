@@ -8,7 +8,7 @@ sidebar_position: 2
 
   1. Check chainstate with curl, you can change `localhost:8545` to your subnet node's RPC PORT
   
-      Call current block api
+      Call latest block api, there should not be error and blocks should increase with time.
 
       ```
       curl --location 'http://localhost:8545' \
@@ -16,7 +16,7 @@ sidebar_position: 2
       --data '{"jsonrpc":"2.0","method":"XDPoS_getV2BlockByNumber","params":["latest"],"id":1}'
       ```
 
-      Check current peers
+      Check current peers, there should be NUM_SUBNET-1 peers
       
       ```
       curl --location 'http://localhost:8545' \

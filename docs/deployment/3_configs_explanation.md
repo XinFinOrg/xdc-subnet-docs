@@ -12,7 +12,7 @@ sidebar_position: 3
   Below is an example of the mimimum file required for configs generation.
   ```
   #deployment config
-  CONFIG_PATH=~/XinFin-Node/subnet/deployment-generator
+  CONFIG_PATH=~/subnet/
 
   #subnet config
   NETWORK_NAME=testsubnet
@@ -21,11 +21,10 @@ sidebar_position: 3
   MAIN_IP=192.168.1.1
 
   #parentchain config
-  PARENTCHAIN=devnet
-  PARENTCHAIN_WALLET=0x0000000000000000000000000000000000000000
-  PARENTCHAIN_WALLET_PK=0x0000000000000000000000000000000000000000000000000000000000000000
+  PARENTNET=devnet
+  PARENTNET_WALLET_PK=0x0000000000000000000000000000000000000000000000000000000000000000
   ```
-  1. CONFIG_PATH - This is the path to the directory where you want to put the generated configs. Most likely it is your current directory.
+  1. CONFIG_PATH - This is the path to the directory where you want to put the generated configs. Most likely it is your current directory. This ENV will be auto generated to the current directory if not included.
 
   2. NETWORK_NAME - Your subnet Name
 
@@ -35,9 +34,9 @@ sidebar_position: 3
 
   5. MAIN_IP - The IP address of the main machine(machine1) which will host subnet services and the bootnode. This IP should be known to all other machines, could be private or public (preferrably private).
 
-  6. PARENTCHAIN - The Parentchain where the Checkpoint Smart Contract (CSC) will be deployed and where relayer will push block headers. Available: 'devnet', 'testnet', 'mainnet'. (Currently only 'devnet' is supported)
+  6. PARENTNET - The Parentchain where the Checkpoint Smart Contract (CSC) will be deployed and where relayer will push block headers. Available: 'devnet', 'testnet', 'mainnet'. (Currently only 'devnet' is supported)
 
-  7. PARENTCHAIN_WALLET_PK - The private key of Parentchain wallet
+  7. PARENTNET_WALLET_PK - The private key of Parentchain wallet
 
   ### Optional Parameters
 
@@ -48,21 +47,18 @@ sidebar_position: 3
   ```
   VERSION_SUBNET
   VERSION_BOOTNODE
-  VERSION_OBSERVER
   VERSION_RELAYER
   VERSION_STATS
   VERSION_FRONTEND
   ```
 
   #### Other Configs
-  - RELAYER_MODE - 'full' or 'lite', this effects the type of Checkpoint Smart Contract(CSC) that is deployed. Defaults to 'full'. Please check [here](../components/relayer/relayer_mode.md) for relayer mode documentation. 
+  - RELAYER_MODE - 'full' or 'lite', this effects the type of Checkpoint Smart Contract(CSC) that the Relayer runs. Defaults to 'full'. Please check [here](../components/relayer/relayer_mode.md) for relayer mode documentation. 
   - GRANDMASTER_PK - The Grandmaster privatekey, only one is allowed. Random if not provided.
   - SUBNETS_PK - Subnet nodes' privatekeys, multiple keys separated by comma(,). Number of keys must equal NUM_SUBNET. Randomized by default. 
   - OS - 'linux' or 'mac', default 'linux'. 'mac' is an optional value for single machine testing environment on MacOS. The docker compose setup is differrent due to [docker network limitation](https://docs.docker.com/network/drivers/host/#:~:text=The%20host%20networking%20driver%20only%20works%20on%20Linux%20hosts%2C%20and%20is%20not%20supported%20on%20Docker%20Desktop%20for%20Mac%2C%20Docker%20Desktop%20for%20Windows).
   - NETWORK_ID - If you want a specific number, must be between 1-65536. Default is random.
   - SERVICES_SECRET - A shared secret for authentication between the stats service and the subnet nodes. Default to a random string.
-  - SLEEP - Debug parameter, set a timer(in seconds) to prevent the generator docker image from shutting down after generation finished. 
-  
 
 ## Files under 'generated' directory 
 After the generator has succesfully run, all generated files will be under 'generated' directory. These files can be edited if you would like to further customize your subnet. Below is a description of each generated file and how it is used.
@@ -88,5 +84,7 @@ After the generator has succesfully run, all generated files will be under 'gene
   - Bootnode port can be changed at `BOOTNODE_PORT` under `common.env`. Also in each `subnetX.env`, `BOOTNODES` port has to be changed.
 3. Stats Server (UI backend) - port 3000. 
   - To change this change left value inside `docker-compose.yml` stats port config. For example `3001:3000` will deploy on port 3001. In each `subnetX.env` file, `STATS_SERVICE_ADDRESS` port needs to be changed. In `common.env`, `VITE_SUBNET_URL` port also needs to change. 
+4. Relayer - port 4000.
+  - The Relayer port is used for Relayer tasks UI which tracks scheduled, completed, failed tasks.
 4. UI Frontend - port 5000.
   - To change this change left value inside `docker-compose.yml` frontend port config. For example `5001:5000` will deploy on port 5001. Then restart the docker image.

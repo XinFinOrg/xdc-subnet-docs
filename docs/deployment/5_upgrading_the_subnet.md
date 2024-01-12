@@ -10,7 +10,7 @@ The CSC is deployed as an upgradable smart contract. For further reading please 
   docker run --env-file common.env   \
     -v $(pwd)/../generated/:/app/config       \
     --network host                             \
-    --entrypoint './docker/deploy_proxy.sh' xinfinorg/csc:<CSC_VERSION>
+    --entrypoint './docker/upgrade_csc.sh' xinfinorg/csc:<CSC_VERSION>
   ```
 
 If the CSC upgrade keeps failing, it could be due to these 2 common reasons:

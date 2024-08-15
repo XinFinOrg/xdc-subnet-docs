@@ -5,11 +5,14 @@ sidebar_position: 6
 
 # Subnet Deployment Generator Changelog
 
+### v0.3.2 - 2024/08/15
+  - Changed frontend default due to clashing from 5000 to 5555
+
 ### v0.3.1 - 2024/07/24
   - Use testnet by default
   - Remove admin api by default
   - Added PUBLIC_IP optional config in deployment-generator
-  - Bump coponent versions
+  - Bump component versions
 
 ### v0.2.1 - 2024/01/09
   - New generation style, pulls script from github to run multiple docker images instead of generating from single image.

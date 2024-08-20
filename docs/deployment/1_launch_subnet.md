@@ -49,7 +49,7 @@ sidebar_position: 1
 
   6. follow the generated instructions in `commands.txt` to start the Subnet Services (relayer, stats-server, frontend)
 
-  7. Check out the Subnet UI at `<MAIN_IP>:5000`
+  7. Check out the Subnet UI at `<MAIN_IP>:5555`
 
 ### Removing Subnet
   1.  Change the commands in `commands.txt` to `docker compose ... down`

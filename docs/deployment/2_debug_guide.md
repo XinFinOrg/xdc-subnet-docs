@@ -21,7 +21,7 @@ sidebar_position: 2
       ```
       curl --location 'http://localhost:8545' \
       --header 'Content-Type: application/json' \
-      --data '{"jsonrpc":"2.0","method":"admin_peers","params":[],"id":1}'
+      --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}'
       ```
 
   2. Check chainstate inside docker

@@ -1,9 +1,12 @@
 ---
 sidebar_label: "Subnet Deployment Generator Changelog"
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 # Subnet Deployment Generator Changelog
+
+### v0.1.0 - 2024/09/28
+  - WIP
 
 ### v0.3.2 - 2024/08/15
   - Changed frontend default due to clashing from 5000 to 5555

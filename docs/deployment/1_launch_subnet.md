@@ -20,6 +20,8 @@ sidebar_position: 1
     - https://faucet.apothem.network/ 
     - https://faucet.blocksscan.io/
 
+## Video Walkthrough
+
 ## Generate Subnet Configs With UI
 
   1. Pull `generator.sh` script from the generator Github repo
@@ -34,7 +36,14 @@ sidebar_position: 1
   cd generated
   ```
 
-  3. Go to [http://localhost:3000/](http://localhost:3000) in your browser. If you are running the generator on a remote server you can first use ssh tunnel: `ssh -N -L localhost:3000:localhost:3000 <username>@<ip_address> -i <private_key_file>`
+  3. Go to [http://localhost:5210/](http://localhost:5210) in your browser.
+  <details>
+  <summary>If you are running this on a remote server.</summary>
+  <p>
+    first use ssh tunnel: <code>ssh -N -L localhost:5210:localhost:5210 USERNAME@IP_ADDRESS -i SERVER_KEY_FILE</code>
+  </p>
+  </details>
+
 
   4. Config the Subnet options per your requirement.
   ![UI](./img/ui.png)
@@ -45,7 +54,7 @@ sidebar_position: 1
       - deploy XDC-Zero (optional)
       - start Subnet Services (relayer, stats-server, frontend)
 
-  6. Once successfully deployed, you can check out [UI usage guide](./../usage/1_homepage.md)
+  6. Once successfully deployed, you can check out [UI usage guide](../usage/ui/1_homepage.md)
 
 ## Removing Subnet
 

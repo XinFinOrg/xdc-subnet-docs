@@ -5,8 +5,23 @@ sidebar_position: 5
 
 # Subnet Deployment Generator Changelog
 
-### v0.1.0 - 2024/09/28
-  - WIP
+### v1.0.0 - 2024/10/03
+  - Added Configuration Generator UI
+  - Added XDC-Zero configuration generation
+  - Added Faucet and Faucet Server
+  - Added helper scripts
+  - Changed default ports of components to prevent clashing
+    - Stats Server - port 5213
+    - Frontend - port 5214
+    - Relayer - port 5215
+    - Faucet Server - port 5211
+    - Generator UI - port 5210
+  - Documentation update
+    - added Subnet setup video walkthrough
+    - added FAQ section
+    - added Contact section
+  - Minor bug fixes
+
 
 ### v0.3.2 - 2024/08/15
   - Changed frontend default due to clashing from 5000 to 5555

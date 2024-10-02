@@ -21,12 +21,13 @@ sidebar_position: 1
     - https://faucet.blocksscan.io/
 
 ## Video Walkthrough
+<iframe width="720" height="400" src="https://www.youtube.com/embed/m-sPbMrB8ow" frameborder="0" allow="fullscreen"></iframe>
 
 ## Generate Subnet Configs With UI
 
   1. Pull `generator.sh` script from the generator Github repo
   ```
-  curl -O https://raw.githubusercontent.com/XinFinOrg/XinFin-Node/generator-ui-concept/subnet/deployment-generator/scripts/generate.sh
+  curl -O https://raw.githubusercontent.com/XinFinOrg/XinFin-Node/master/subnet/deployment-generator/scripts/generate.sh
   ```
   
   2. Run the configuration generator, this will start a local webserver

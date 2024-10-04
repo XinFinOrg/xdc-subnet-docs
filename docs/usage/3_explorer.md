@@ -1,6 +1,6 @@
 ---
-sidebar_label: "4. Blockchain Explorer"
-sidebar_position: 4
+sidebar_label: "Blockchain Explorer"
+sidebar_position: 3
 ---
 
 # Blockchain Explorer

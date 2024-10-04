@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main 
+      - develop
 
 jobs:
   deploy:
@@ -14,10 +14,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 18 
+          node-version: 18
 
       - name: Install dependencies
         run: npm install
+
+      - name: reconfig docusaurus baseUrl
+        run: |
+          sed -i 's|baseUrl: '\''/xdc-subnet-docs/'\''|baseUrl: '\''/xdc-subnet-docs/develop/'\''|' docusaurus.config.js
 
       - name: Build site
         run: npm run build
@@ -28,3 +32,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
           publish_branch: gh-pages
+          destination_dir: develop

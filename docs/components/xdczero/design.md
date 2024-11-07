@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# design
+# Design
 
 XDC-Zero is a cross-chain framework that allows interoperability between XDC-Subnet and the XDC network. It ensures frictionless data transmission and rigorous validation across the Subnet and the Parentchain.
 

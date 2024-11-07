@@ -31,9 +31,9 @@ At its core, the Endpoint functions as the orchestrator for all cross-chain data
 
 Experience a user-centric interface to manage the endpoint contracts spanning different chains. View the chain entities already synchronized with the current endpoint contract and effortlessly onboard new chain entities as per requirements.
 
-## Endpoint workflow
-
 ![System Architecture](image1.png)
+
+## Endpoint workflow
 
 ![System Architecture](image2.png)
 

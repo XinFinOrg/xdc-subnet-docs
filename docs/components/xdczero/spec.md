@@ -1,3 +1,7 @@
+---
+sidebar_label: Specs
+sidebar_position: 3
+---
 # API Documentation
 
 ## Restricted Access Functions

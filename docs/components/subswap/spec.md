@@ -1,4 +1,5 @@
 ---
+sidebar_label: Specs
 sidebar_position: 3
 ---
 ### Subswap API Documentation

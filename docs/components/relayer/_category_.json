@@ -3,7 +3,7 @@
   "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "This section specifies the relayer that checkpoints the subnet chain to the parent chain."
+    "description": "default"
   }
 }
 

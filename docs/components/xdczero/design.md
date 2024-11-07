@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # design
 
-Achieve unparalleled blockchain interoperability with XDC ZERO, ensuring frictionless data transmission and rigorous validation across a multitude of chains.
+XDC-Zero is a cross-chain framework that allows interoperability between XDC-Subnet and the XDC network. It ensures frictionless data transmission and rigorous validation across the Subnet and the Parentchain.
 
 ## Key Components
 
@@ -32,6 +32,8 @@ At its core, the Endpoint functions as the orchestrator for all cross-chain data
 Experience a user-centric interface to manage the endpoint contracts spanning different chains. View the chain entities already synchronized with the current endpoint contract and effortlessly onboard new chain entities as per requirements.
 
 ## Endpoint workflow
+
+![System Architecture](image1.png)
 
 ![System Architecture](image2.png)
 

@@ -11,7 +11,7 @@ sidebar_position: 1
 
 #### **Overview**
 
-Subswap is built on XDC Zero to provide seamless cross-chain transfer capabilities. It is structured in a multi-layered architecture, with each layer handling distinct functions to ensure smooth, secure, and efficient transactions across blockchain networks. This document provides a design overview of each layer, illustrating the components and their roles within the Subswap system.
+Subswap is cross-chain application built on XDC Zero to provide seamless cross-chain transfer capabilities. It is structured in a multi-layered architecture, with each layer handling distinct functions to ensure smooth, secure, and efficient transactions across blockchain networks. This document provides a design overview of each layer, illustrating the components and their roles within the Subswap system.
 
 ---
 

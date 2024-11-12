@@ -26,7 +26,7 @@ sidebar_position: 4
 - **How can I manage Subnet tokens?**
 
   1. Use the [Subnet Faucet](../usage/2_faucet.md) to easily transfer Subnet tokens to your users.
-  2. Connect any Web3 wallet to the Subnet RPC as a custom network and transfer tokens to other addresses.
+  2. Use any Web3 wallet (such as Metamask or OKX wallet), add the Subnet RPC as a custom network then connect to the Subnet and transfer tokens to other addresses.
 
 - **How can I easily give out Subnet tokens to my users?**
 

@@ -5,38 +5,56 @@ sidebar_position: 4
 
 # Frequently Asked Questions
 
- - How many Subnet nodes should I have?
+## Subnet Node Requirements
 
-  Even one node is enough to start the Subnet blockchain! However, for better decantralized security, 3+ nodes is recommended. At least 2/3 of all nodes must be online and honest to mine blocks.
+- **How many Subnet nodes should I have?**
 
- - For testing, should I checkpoint the Subnet to devnet or testnet?
- 
-  Testnet, devnet will be less stable due to frequent development changes.
+  Even one node is enough to start the Subnet blockchain! However, for better decentralized security, 3+ nodes are recommended. At least 2/3 of all nodes must be online and honest to mine blocks.
 
- - Where are all the Subnet tokens, how do I use the Subnet?
+## Development and Testing
 
-  In XDC-Subnet all initial tokens are assigned to the Grandmaster wallet (check keys.json). You can transfer them to any wallet address. Check [Faucet](../usage/2_faucet.md).
+- **For testing, should I checkpoint the Subnet to devnet or testnet?**
 
-- How can I manage Subnet tokens?
+  It's recommended to use the testnet, as the devnet will be less stable due to frequent development changes.
 
-  1. Check [here](../usage/2_faucet.md) for how you can use the Subnet Faucet to easily transfer Subnet tokens to your users.
-  2. You can use any web3 wallet and connect to the Subnet RPC as a custom network, then transfer to other addresses.
+## Managing Subnet Tokens
 
- - How can I easily give out Subnet tokens to my users?
- 
-  We have provided a Faucet server for you to deploy under `generated/scripts/faucet-server.sh`. Anyone with access to the faucet page can request for tokens.
-  Please check (faucet page)
+- **Where are all the Subnet tokens, and how do I use the Subnet?**
 
- - Which files contain sensitive data and private keys?
+  In XDC-Subnet, all initial tokens are assigned to the Grandmaster wallet (check `keys.json`). You can transfer tokens to any wallet address. For easy transfers, refer to the [Faucet](../usage/2_faucet.md) documentation.
 
-  common.env, contract_deploy.env, keys.json, and subnet*.env. Please make sure these files are kept securely.
+- **How can I manage Subnet tokens?**
 
-- This function didn't work/I have encoutered an unexpected bug
+  1. Use the [Subnet Faucet](../usage/2_faucet.md) to easily transfer Subnet tokens to your users.
+  2. Use any Web3 wallet (such as Metamask or OKX wallet), add the Subnet RPC as a custom network then connect to the Subnet and transfer tokens to other addresses.
 
-  For troubleshooting we can help you at [Telegram Support Group](./3_troubleshooting.md#telegram-troubleshooting-support-group) and we will check as soon as possible.
+- **How can I easily give out Subnet tokens to my users?**
 
-  Other channels for suggestions/requests include [XDC Forum](https://forum.xinfin.org/) and [GitHub Issues](https://github.com/XinFinOrg/XDC-Subnet/issues)
+  A Faucet server script is provided for you to deploy under `generated/scripts/faucet-server.sh`. Anyone with access to the faucet page can request tokens. Please refer to the [faucet page](../usage/2_faucet.md) for more details.
 
-- How do I change the Relayer Wallet/Parentchain Wallet?
+## Security and Sensitive Files
 
-  You can [update services configs](./2_configs_explanation.md#updating-services-configs) in common.env to change the Relayer key
+- **Which files contain sensitive data and private keys?**
+
+  The following files contain sensitive information and should be stored securely:
+
+  - `common.env`
+  - `contract_deploy.env`
+  - `keys.json`
+  - `subnet*.env`
+
+## Configuration Changes
+
+- **How do I change the Relayer Wallet/Parentchain Wallet?**
+
+  You can update the `common.env` file to change the Relayer key. Refer to the [service configuration documentation](./2_configs_explanation.md#updating-services-configs) for more details.
+
+## Troubleshooting
+
+- **What should I do if a function didn’t work or I encountered an unexpected bug?**
+
+  For troubleshooting support, join our [Telegram Support Group](./3_troubleshooting.md#telegram-troubleshooting-support-group).  
+  For suggestions or requests, you can also reach out via:
+
+  - [XDC Forum](https://forum.xinfin.org/)
+  - [GitHub Issues](https://github.com/XinFinOrg/XDC-Subnet/issues)

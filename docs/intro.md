@@ -4,4 +4,4 @@ sidebar_position: 1
 ---
 
 # Welcome
-Welcome to the technical documentation site of XDC enterprise private subnet! We are continuously adding materials to it.
+This site has been deprecated. We have migrated XDC-Subnet documentation to the official XDC documentation site https://docs.xdc.network/subnet/
